@@ -19,43 +19,30 @@ import org.testng.annotations.Parameters;
 
 import com.sodexo.pom.HomePage;
 import com.sodexo.pom.LoginPage;
-
 public class BaseClass {
-public WebDriver driver;
-public static FileLib f = new FileLib();
-	@Parameters("browser")
+	public static WebDriver driver;
+	public static FileLib f=new FileLib();
 	@BeforeTest
-	public void openBrowser(String browser) throws IOException {
-		switch(browser) {
-		case "chrome": driver = new ChromeDriver();break;
-		case "edge": driver = new EdgeDriver();break;
-		case "firefox": driver = new FirefoxDriver();break;
-		default: driver=new ChromeDriver();
-		}
+	public void openBrowser() throws IOException {
+		driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		String url = f.getPropertyData("url");
 		driver.get(url);
 	}
-	
 	@BeforeMethod
 	public void login() throws IOException {
-		String un = f.getPropertyData("un");
-		String pwd = f.getPropertyData("pwd");
-		LoginPage l = new LoginPage(driver);
-		l.login(un, pwd);
-	}
-	
-	@AfterMethod
+String un = f.getPropertyData("un");
+String pwd = f.getPropertyData("pwd");
+		LoginPage l=new LoginPage(driver);
+		l.login(un,pwd);
+	}@AfterMethod
 	public void logout() {
-		HomePage h = new HomePage(driver);
+		HomePage h=new HomePage(driver);
 		h.setLogout();
-	}
-	
-	@AfterTest
+	}@AfterTest
 	public void closeBrowser() {
 		driver.manage().window().minimize();
 		driver.quit();
-		
-
-}}
+	}
+}

@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.sodexo.testscript.UserModule">
+      <class name="com.sodexo.testscript.CreateCutomerModule">
         <methods>
-          <include name="closeBrowser"/>
+          <include name="createCustomer"/>
           <include name="logout"/>
+          <include name="closeBrowser"/>
           <include name="login"/>
           <include name="openBrowser"/>
-          <include name="addAndDeleteUser"/>
         </methods>
-      </class> <!-- com.sodexo.testscript.UserModule -->
+      </class> <!-- com.sodexo.testscript.CreateCutomerModule -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
